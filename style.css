@@ -1,5 +1,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+    /* ============================================================
+    ROOT & RESET
+    ============================================================ */
     :root {
         --bg-main: #0B0F19;
         --text-title: #FFFFFF;
@@ -33,32 +36,24 @@
         max-width: 100%;
     }
 
+    /* ============================================================
+    HEADER & NAVBAR
+    ============================================================ */
     .header-container {
         display: flex;
         justify-content: center;
         width: 100%;
-        position: fixed;    
+        position: fixed;
         top: 0;
         left: 0;
         z-index: 1000;
         backdrop-filter: var(--glass-blur);
-        background-color: var(--glass-bg); 
-        -webkit-backdrop-filter: var(--glass-blur); 
+        background-color: var(--glass-bg);
+        -webkit-backdrop-filter: var(--glass-blur);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         opacity: 0;
         animation: headerIn 1s forwards;
         will-change: backdrop-filter;
-    }
-
-    @keyframes headerIn {
-        0% {
-            transform: translateY(-50px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     .navbar {
@@ -150,9 +145,9 @@
 
     li a.contact-btn {
         background-color: rgba(255, 255, 255, 0.3) !important;
-        color: var(--text-body-hover) !important; 
+        color: var(--text-body-hover) !important;
         padding: 8px 18px;
-        border-radius: 50px; 
+        border-radius: 50px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -164,13 +159,13 @@
     }
 
     li a.contact-btn i {
-        font-size: 14px; 
+        font-size: 14px;
         margin-left: 6px;
         transform: translateY(-0.6px);
     }
 
     li a.contact-btn:hover {
-        background-color: rgba(255, 255, 255, 0.4) !important; 
+        background-color: rgba(255, 255, 255, 0.4) !important;
         box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.3);
     }
 
@@ -187,17 +182,54 @@
         transform: scale(0.95);
     }
 
-    li a.contact-btn:active {
-        transform: scale(0.95);
+    /* ============================================================
+    HAMBURGER MENU
+    ============================================================ */
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 6px;
+        z-index: 1001;
     }
 
+    .hamburger .bar {
+        display: block;
+        width: 32px;
+        height: 3px;
+        background-color: var(--text-title);
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* SCROLL BLOCKER */
+    body.no-scroll {
+        overflow: hidden !important;
+        touch-action: none !important;
+    }
+
+    /* ============================================================
+    HERO SECTION
+    ============================================================ */
     .hero-section {
         background: linear-gradient(to right, rgba(11, 15, 25, 0.85) 0%, rgba(11, 15, 25, 0.4) 50%, rgba(11, 15, 25, 0.1) 100%), url('images/hero-photo.jpg');
         background-repeat: no-repeat;
-        background-size: cover; 
-        background-position: center 30%; 
+        background-size: cover;
+        background-position: center 30%;
         width: 100%;
-        height: 100vh; 
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -234,7 +266,7 @@
 
     .hero-box span {
         color: var(--text-body-2);
-        font-size: 1.25rem; 
+        font-size: 1.25rem;
         font-weight: 400;
         line-height: 1.6;
         max-width: 600px;
@@ -247,19 +279,6 @@
         animation: wipeReveal 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.6s;
     }
 
-    @keyframes wipeReveal {
-        0% {
-            opacity: 0;
-            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-            transform: translateX(-10px);
-        }
-        100% {
-            opacity: 1;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            transform: translateX(0);
-        }
-    }
-
     .hero-buttons {
         width: 100%;
         display: flex;
@@ -269,7 +288,7 @@
 
     .hero-buttons a {
         position: relative;
-        overflow: hidden; 
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -300,78 +319,56 @@
         animation-delay: 0.8s;
     }
 
-    @keyframes buttonReveal {
-        0% {
-            opacity: 0;
-            transform: translateX(-2px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-
     .hero-buttons a.contact-btn::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: rgba(255, 255, 255, 0.9); 
+        background: rgba(255, 255, 255, 0.9);
         z-index: -1;
         transform: scaleX(0);
-        transform-origin: right; 
-        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        transform-origin: right;
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .hero-buttons a.contact-btn:hover::before {
-        transform: scaleX(1); 
+        transform: scaleX(1);
     }
 
     .hero-buttons a:hover {
-        box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.3); 
-        color: var(--bg-main); 
+        box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.3);
+        color: var(--bg-main);
     }
 
     .hero-buttons a:active {
-        transform: scale(0.96); 
+        transform: scale(0.96);
     }
 
+    /* FIX: transform setat direct ca să nu apară în dreapta înainte de animație */
     .scroll-down {
         position: absolute;
         bottom: 30px;
         left: 50%;
+        transform: translateX(-50%);
         color: var(--text-title);
         font-size: 34px;
         text-decoration: none;
         opacity: 0;
-        animation: fadeInScroll 0.5s forwards 1s, bounce 2s infinite 1.3s; 
+        animation: fadeInScroll 0.5s forwards 1s, bounceScroll 2s infinite 1.3s;
         z-index: 10;
         transition: color 0.3s ease;
-        transform: translateX(-50%);
     }
 
     .scroll-down:hover {
         color: var(--text-title);
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0);
     }
 
-    @keyframes fadeInScroll {
-        to { opacity: 1; }
-    }
-
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateY(0) translateX(-50%);
-        }
-        50% {
-            transform: translateY(10px) translateX(-50%);
-        }
-    }
-
-    .about-section, 
+    /* ============================================================
+    SECTION BASE STYLES
+    ============================================================ */
+    .about-section,
     .memberships-section,
     .our-team-section,
-    .faq-section, 
+    .faq-section,
     .contact-section {
         width: 100%;
         min-height: 100vh;
@@ -382,12 +379,15 @@
         color: var(--text-title);
     }
 
-    .about-section { background-color: #1a1c22; }
+    .about-section      { background-color: #1a1c22; }
     .memberships-section { background-color: var(--bg-main); }
-    .our-team-section { background-color: #1a1c22; }
-    .faq-section { background-color: var(--bg-main); }
-    .contact-section { background-color: #1a1c22; }
+    .our-team-section   { background-color: #1a1c22; }
+    .faq-section        { background-color: var(--bg-main); }
+    .contact-section    { background-color: #1a1c22; }
 
+    /* ============================================================
+    ABOUT SECTION
+    ============================================================ */
     .about-content {
         width: 100%;
         max-width: 100vw;
@@ -443,7 +443,7 @@
         gap: 22px;
         padding-left: 20px;
     }
-    
+
     .about-box-text ul li {
         display: flex;
         flex-direction: row;
@@ -473,57 +473,21 @@
         border-radius: 12px;
     }
 
-    .animate-on-scroll {
-        opacity: 0;
-    }
+    /* About scroll animations */
+    .animate-on-scroll { opacity: 0; }
 
-    .animate-on-scroll.active.about-h1-reveal {
-        animation: wipeReveal 1.35s forwards;
-    }
-
-    .animate-on-scroll.active.about-h3-1-reveal {
-        animation: wipeReveal 1.35s forwards 0.2s;
-    }
-
-    .animate-on-scroll.active.about-p-1-reveal {
-        animation: wipeReveal 1.35s forwards 0.35s;
-    }
-
-    .animate-on-scroll.active.about-p-2-reveal {
-        animation: wipeReveal 1.35s forwards 0.5s;
-    }
-
-    .animate-on-scroll.active.about-h3-2-reveal {
-        animation: wipeReveal 1.35s forwards 0.65s;
-    }
-
-    .animate-on-scroll.active.about-li-1-reveal {
-        animation: listReveal 1s forwards 0.75s;
-    }
-
-    .animate-on-scroll.active.about-li-2-reveal {
-        animation: listReveal 1s forwards 0.85s;
-    }
-
-    .animate-on-scroll.active.about-li-3-reveal {
-        animation: listReveal 1s forwards 0.95s;
-    }
-
-    .animate-on-scroll.active.about-li-4-reveal {
-        animation: listReveal 1s forwards 1.05s;
-    }
-    
-    .animate-on-scroll.active.about-img-1-reveal {
-        animation: imgReveal 1.25s forwards 0.45s;
-    }
-
-    .animate-on-scroll.active.about-img-2-reveal {
-        animation: imgReveal-2 1.25s forwards 0.45s;
-    }
-
-    .animate-on-scroll.active.about-p-3-reveal {
-        animation: wipeReveal 1.35s forwards 0.8s;
-    }
+    .animate-on-scroll.active.about-h1-reveal    { animation: wipeReveal 1.35s forwards; }
+    .animate-on-scroll.active.about-h3-1-reveal  { animation: wipeReveal 1.35s forwards 0.2s; }
+    .animate-on-scroll.active.about-p-1-reveal   { animation: wipeReveal 1.35s forwards 0.35s; }
+    .animate-on-scroll.active.about-p-2-reveal   { animation: wipeReveal 1.35s forwards 0.5s; }
+    .animate-on-scroll.active.about-h3-2-reveal  { animation: wipeReveal 1.35s forwards 0.65s; }
+    .animate-on-scroll.active.about-li-1-reveal  { animation: listReveal 1s forwards 0.75s; }
+    .animate-on-scroll.active.about-li-2-reveal  { animation: listReveal 1s forwards 0.85s; }
+    .animate-on-scroll.active.about-li-3-reveal  { animation: listReveal 1s forwards 0.95s; }
+    .animate-on-scroll.active.about-li-4-reveal  { animation: listReveal 1s forwards 1.05s; }
+    .animate-on-scroll.active.about-img-1-reveal { animation: imgReveal 1.25s forwards 0.45s; }
+    .animate-on-scroll.active.about-img-2-reveal { animation: imgReveal-2 1.25s forwards 0.45s; }
+    .animate-on-scroll.active.about-p-3-reveal   { animation: wipeReveal 1.35s forwards 0.8s; }
 
     .about-box-buttons {
         display: flex;
@@ -535,11 +499,10 @@
 
     .about-box-buttons button {
         position: relative;
-        overflow: hidden; 
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         height: 60px;
         width: 240px;
         font-size: 20px;
@@ -563,7 +526,7 @@
         background-color: #bed6f6;
         border: 1px solid #bed6f6;
     }
-    
+
     .about-box-buttons button:nth-child(1) a {
         color: var(--bg-main);
     }
@@ -583,14 +546,10 @@
         box-shadow: 0 0 15px 2px rgba(165, 201, 255, 0.25);
     }
 
-    .animate-on-scroll.active.about-button-1-reveal {
-        animation: buttonReveal2 1s forwards 0.7s;
-    }
+    .animate-on-scroll.active.about-button-1-reveal { animation: buttonReveal2 1s forwards 0.7s; }
+    .animate-on-scroll.active.about-button-2-reveal { animation: buttonReveal2 1s forwards 0.8s; }
 
-    .animate-on-scroll.active.about-button-2-reveal {
-        animation: buttonReveal2 1s forwards 0.8s;
-    }
-
+    /* Why Choose Us */
     .why-choose-us-box {
         margin-top: 50px;
         display: flex;
@@ -656,26 +615,15 @@
         font-size: 15px;
     }
 
-    .animate-on-scroll.active.choose-h1-reveal {
-        animation: wipeReveal 1.8s forwards;
-    }
+    .animate-on-scroll.active.choose-h1-reveal    { animation: wipeReveal 1.8s forwards; }
+    .animate-on-scroll.active.choose-box-1-reveal { animation: chooseBoxReveal 1s forwards 0.1s; }
+    .animate-on-scroll.active.choose-box-2-reveal { animation: chooseBoxReveal 1s forwards 0.25s; }
+    .animate-on-scroll.active.choose-box-3-reveal { animation: chooseBoxReveal 1s forwards 0.4s; }
+    .animate-on-scroll.active.choose-box-4-reveal { animation: chooseBoxReveal 1s forwards 0.55s; }
 
-    .animate-on-scroll.active.choose-box-1-reveal {
-        animation: chooseBoxReveal 1s forwards 0.1s;
-    }
-
-    .animate-on-scroll.active.choose-box-2-reveal {
-        animation: chooseBoxReveal 1s forwards 0.25s;
-    }
-
-    .animate-on-scroll.active.choose-box-3-reveal {
-        animation: chooseBoxReveal 1s forwards 0.4s;
-    }
-
-    .animate-on-scroll.active.choose-box-4-reveal {
-        animation: chooseBoxReveal 1s forwards 0.55s;
-    }
-
+    /* ============================================================
+    MEMBERSHIPS SECTION
+    ============================================================ */
     .memberships-content {
         width: 100%;
         max-width: 100vw;
@@ -694,9 +642,7 @@
         margin-bottom: 60px;
     }
 
-    .animate-on-scroll.active.memberships-h1-reveal {
-        animation: wipeReveal 1.8s forwards;
-    }
+    .animate-on-scroll.active.memberships-h1-reveal { animation: wipeReveal 1.8s forwards; }
 
     .principal-memberships {
         display: flex;
@@ -726,29 +672,9 @@
         border: 1px solid rgba(165, 201, 255, 0.4);
     }
 
-    .animate-on-scroll.active.membership-card-1-reveal {
-        animation: membershipCardReveal 1s forwards; 
-    }
-
-    .animate-on-scroll.active.membership-card-2-reveal {
-        animation: membershipCardRevealRecommended 1s forwards 0.2s;
-    }
-
-    .animate-on-scroll.active.membership-card-3-reveal {
-        animation: membershipCardReveal 1s forwards 0.4s;
-    }
-
-    @keyframes membershipCardReveal {
-        0% {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+    .animate-on-scroll.active.membership-card-1-reveal { animation: membershipCardReveal 1s forwards; }
+    .animate-on-scroll.active.membership-card-2-reveal { animation: membershipCardRevealRecommended 1s forwards 0.2s; }
+    .animate-on-scroll.active.membership-card-3-reveal { animation: membershipCardReveal 1s forwards 0.4s; }
 
     .membership-card.recommended {
         padding-top: 40px;
@@ -761,18 +687,6 @@
         box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
         background-color: rgba(255, 255, 255, 0.04);
         transition: all 0.3s ease;
-    }
-
-    @keyframes membershipCardRevealRecommended {
-        0% {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateY(-10px);
-        }
     }
 
     .membership-card.recommended:hover {
@@ -852,11 +766,10 @@
 
     .membership-card button {
         position: relative;
-        overflow: hidden; 
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         font-size: 20px;
         height: 40px;
         font-weight: 700;
@@ -902,29 +815,21 @@
         font-weight: 500;
     }
 
+    /* FIX: display block + width 100% pentru centrare corectă */
     .memberships-content h3.more-memberships {
         margin-top: 50px;
         font-size: 22px;
         text-align: center;
+        width: 100%;
         opacity: 0;
     }
 
-    .animate-on-scroll.active.more-memberships-h3-reveal {
-        animation: fadeInScroll2 0.5s forwards 0.1s;
-    }
+    .animate-on-scroll.active.more-memberships-h3-reveal { animation: fadeInScroll2 0.5s forwards 0.1s; }
 
-    @keyframes fadeInScroll2 {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
+    /* FIX: display block + width 100% pentru centrare corectă */
     .more-memberships-icon {
+        display: block;
+        width: 100%;
         text-align: center;
         margin-top: 10px;
         color: var(--text-title);
@@ -937,7 +842,6 @@
 
     .more-memberships-icon:hover {
         color: var(--text-title);
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0);
     }
 
     .animate-on-scroll.active.more-memberships-icon-reveal {
@@ -963,52 +867,18 @@
         height: auto;
     }
 
-    .animate-on-scroll.active.membership-pass-1-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-    
-    .animate-on-scroll.active.membership-pass-2-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-    
-    .animate-on-scroll.active.membership-pass-3-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-
-    .animate-on-scroll.active.membership-pass-4-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-
-    .animate-on-scroll.active.membership-pass-5-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-
-    .animate-on-scroll.active.membership-pass-6-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-
-    .animate-on-scroll.active.membership-pass-7-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-
-    .animate-on-scroll.active.membership-pass-8-reveal {
-        animation: membershipPassReveal 1s forwards;
-    }
-
-    @keyframes membershipPassReveal {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
     .membership-pass:nth-child(1) {
         border-top: 2px solid rgba(255, 255, 255, 0.8);
     }
+
+    .animate-on-scroll.active.membership-pass-1-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-2-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-3-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-4-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-5-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-6-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-7-reveal { animation: membershipPassReveal 1s forwards; }
+    .animate-on-scroll.active.membership-pass-8-reveal { animation: membershipPassReveal 1s forwards; }
 
     .membership-informations {
         display: flex;
@@ -1080,25 +950,24 @@
         transition: grid-template-rows 0.3s ease-out, margin-top 0.3s ease-out;
         margin-left: 3px;
         background-color: rgba(255, 255, 255, 0.04);
-        border-left: 5px solid #a5c9ff; 
+        border-left: 5px solid #a5c9ff;
         border-radius: 0 4px 4px 0;
-        margin-top: 0; 
+        margin-top: 0;
     }
 
     .membership-extra-informations.active {
-        grid-template-rows: 1fr; 
-        margin-top: 15px; 
+        grid-template-rows: 1fr;
+        margin-top: 15px;
     }
 
     .membership-extra-informations p {
-        overflow: hidden; 
+        overflow: hidden;
         margin: 0;
-        padding: 0 24px; 
-        
+        padding: 0 24px;
         color: #a0aabf;
         font-size: 14px;
         line-height: 1.6;
-        opacity: 0; 
+        opacity: 0;
         transition: padding 0.3s ease-out, opacity 0.3s ease-out;
     }
 
@@ -1107,6 +976,9 @@
         opacity: 1;
     }
 
+    /* ============================================================
+    OUR TEAM SECTION
+    ============================================================ */
     .our-team-content {
         width: 100%;
         max-width: 100vw;
@@ -1125,9 +997,7 @@
         margin-bottom: 60px;
     }
 
-    .animate-on-scroll.active.our-team-h1-reveal {
-        animation: wipeReveal 1.8s forwards;
-    }
+    .animate-on-scroll.active.our-team-h1-reveal { animation: wipeReveal 1.8s forwards; }
 
     .team-grid {
         display: grid;
@@ -1139,48 +1009,14 @@
         text-align: center;
     }
 
-    .animate-on-scroll.active.team-member-1-reveal {
-        animation: teamMemberReveal 1s forwards 0.1s;
-    }
-
-    .animate-on-scroll.active.team-member-2-reveal {
-        animation: teamMemberReveal 1s forwards 0.2s;
-    }
-
-    .animate-on-scroll.active.team-member-3-reveal {
-        animation: teamMemberReveal 1s forwards 0.3s;
-    }
-
-    .animate-on-scroll.active.team-member-4-reveal {
-        animation: teamMemberReveal 1s forwards 0.4s;
-    }
-
-    .animate-on-scroll.active.team-member-5-reveal {
-        animation: teamMemberReveal 1s forwards 0.1s;
-    }
-
-    .animate-on-scroll.active.team-member-6-reveal {
-        animation: teamMemberReveal 1s forwards 0.2s;
-    }
-
-    .animate-on-scroll.active.team-member-7-reveal {
-        animation: teamMemberReveal 1s forwards 0.3s;
-    }
-
-    .animate-on-scroll.active.team-member-8-reveal {
-        animation: teamMemberReveal 1s forwards 0.4s;
-    }
-
-    @keyframes teamMemberReveal {
-        0% {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+    .animate-on-scroll.active.team-member-1-reveal { animation: teamMemberReveal 1s forwards 0.1s; }
+    .animate-on-scroll.active.team-member-2-reveal { animation: teamMemberReveal 1s forwards 0.2s; }
+    .animate-on-scroll.active.team-member-3-reveal { animation: teamMemberReveal 1s forwards 0.3s; }
+    .animate-on-scroll.active.team-member-4-reveal { animation: teamMemberReveal 1s forwards 0.4s; }
+    .animate-on-scroll.active.team-member-5-reveal { animation: teamMemberReveal 1s forwards 0.1s; }
+    .animate-on-scroll.active.team-member-6-reveal { animation: teamMemberReveal 1s forwards 0.2s; }
+    .animate-on-scroll.active.team-member-7-reveal { animation: teamMemberReveal 1s forwards 0.3s; }
+    .animate-on-scroll.active.team-member-8-reveal { animation: teamMemberReveal 1s forwards 0.4s; }
 
     .member-image-wrapper {
         position: relative;
@@ -1195,7 +1031,7 @@
         width: 100%;
         height: 380px;
         object-fit: cover;
-        filter: grayscale(100%); 
+        filter: grayscale(100%);
         transition: filter 0.4s ease, transform 0.4s ease;
         display: block;
     }
@@ -1257,11 +1093,14 @@
     }
 
     .member-info .specialization {
-        color: #a0aabf; 
+        color: #a0aabf;
         font-size: 14px;
         font-weight: 500;
-    } 
+    }
 
+    /* ============================================================
+    FAQ SECTION
+    ============================================================ */
     .faq-content {
         width: 100%;
         max-width: 100vw;
@@ -1280,9 +1119,7 @@
         margin-bottom: 60px;
     }
 
-    .animate-on-scroll.active.faq-h1-reveal {
-        animation: wipeReveal 1.8s forwards;
-    }
+    .animate-on-scroll.active.faq-h1-reveal { animation: wipeReveal 1.8s forwards; }
 
     .faq-container {
         display: flex;
@@ -1319,8 +1156,8 @@
         font-weight: 600;
         letter-spacing: 0.2px;
         color: rgba(229, 231, 235, 0.9);
-        margin-bottom: 15px;   
-        width: 100%; 
+        margin-bottom: 15px;
+        width: 100%;
     }
 
     .faq-question button {
@@ -1334,7 +1171,7 @@
         width: 100%;
         font-size: 22px;
         font-weight: 600;
-        text-align: right;
+        text-align: left;
         color: rgba(229, 231, 235, 1);
     }
 
@@ -1347,7 +1184,7 @@
     }
 
     .faq-box.active .faq-answer {
-        grid-template-rows: 1fr; 
+        grid-template-rows: 1fr;
     }
 
     .faq-answer span {
@@ -1372,38 +1209,18 @@
         transform: rotate(180deg);
     }
 
-    .animate-on-scroll.active.faq-box-1-reveal {
-        animation: membershipPassReveal 1s forwards 0.05s;
-    }
+    .animate-on-scroll.active.faq-box-1-reveal { animation: membershipPassReveal 1s forwards 0.05s; }
+    .animate-on-scroll.active.faq-box-2-reveal { animation: membershipPassReveal 1s forwards 0.07s; }
+    .animate-on-scroll.active.faq-box-3-reveal { animation: membershipPassReveal 1s forwards 0.09s; }
+    .animate-on-scroll.active.faq-box-4-reveal { animation: membershipPassReveal 1s forwards 0.11s; }
+    .animate-on-scroll.active.faq-box-5-reveal { animation: membershipPassReveal 1s forwards 0.13s; }
+    .animate-on-scroll.active.faq-box-6-reveal { animation: membershipPassReveal 1s forwards 0.15s; }
+    .animate-on-scroll.active.faq-box-7-reveal { animation: membershipPassReveal 1s forwards 0.17s; }
+    .animate-on-scroll.active.faq-box-8-reveal { animation: membershipPassReveal 1s forwards 0.19s; }
 
-    .animate-on-scroll.active.faq-box-2-reveal {
-        animation: membershipPassReveal 1s forwards 0.07s;
-    }
-
-    .animate-on-scroll.active.faq-box-3-reveal {
-        animation: membershipPassReveal 1s forwards 0.09s;
-    }
-
-    .animate-on-scroll.active.faq-box-4-reveal {
-        animation: membershipPassReveal 1s forwards 0.11s;
-    }
-
-    .animate-on-scroll.active.faq-box-5-reveal {
-        animation: membershipPassReveal 1s forwards 0.13s;
-    }
-
-    .animate-on-scroll.active.faq-box-6-reveal {
-        animation: membershipPassReveal 1s forwards 0.15s;
-    }
-
-    .animate-on-scroll.active.faq-box-7-reveal {
-       animation: membershipPassReveal 1s forwards 0.17s;
-    }
-
-    .animate-on-scroll.active.faq-box-8-reveal {
-        animation: membershipPassReveal 1s forwards 0.19s;
-    }
-    
+    /* ============================================================
+    CONTACT SECTION
+    ============================================================ */
     .contact-content {
         width: 100%;
         max-width: 100vw;
@@ -1422,9 +1239,7 @@
         margin-bottom: 60px;
     }
 
-    .animate-on-scroll.active.contact-h1-reveal {
-        animation: wipeReveal 1.8s forwards;
-    }
+    .animate-on-scroll.active.contact-h1-reveal { animation: wipeReveal 1.8s forwards; }
 
     .contact-grid {
         display: grid;
@@ -1485,7 +1300,7 @@
     }
 
     select option {
-        background-color: #1e2026; 
+        background-color: #1e2026;
         color: var(--text-body);
         padding: 10px;
     }
@@ -1506,22 +1321,19 @@
         transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         max-height: 160px;
         resize: vertical;
-    }
-
-    .input-group textarea {
         scrollbar-width: thin;
         scrollbar-color: rgba(165, 201, 255, 0.3) rgba(255, 255, 255, 0.02);
     }
 
-    .input-group input:hover, 
-    .input-group select:hover, 
+    .input-group input:hover,
+    .input-group select:hover,
     .input-group textarea:hover {
         border-color: rgba(165, 201, 255, 0.7);
         box-shadow: 0 0 10px rgba(165, 201, 255, 0.05);
     }
 
-    .input-group input:focus, 
-    .input-group select:focus, 
+    .input-group input:focus,
+    .input-group select:focus,
     .input-group textarea:focus {
         border-color: #a5c9ff;
         box-shadow: 0 0 10px rgba(165, 201, 255, 0.1);
@@ -1544,19 +1356,9 @@
         transition: color 0.3s ease;
     }
 
-    ::placeholder {
-        color: var(--text-body);
-        opacity: 1;
-        font-size: 14px; 
-    }
-
-    :-ms-input-placeholder {
-        color: var(--text-body);
-    }
-
-    ::-ms-input-placeholder {
-        color: var(--text-body);
-    }
+    ::placeholder            { color: var(--text-body); opacity: 1; font-size: 14px; }
+    :-ms-input-placeholder   { color: var(--text-body); }
+    ::-ms-input-placeholder  { color: var(--text-body); }
 
     .contact-info-container {
         background: rgba(255, 255, 255, 0.02);
@@ -1579,7 +1381,7 @@
         margin-bottom: 10px;
     }
 
-    .info-item h3 i { 
+    .info-item h3 i {
         width: 25px;
     }
 
@@ -1637,28 +1439,26 @@
         justify-content: center;
         gap: 10px;
         background: rgba(37, 211, 102, 0.03);
-        border: 1px solid rgba(37, 211, 102, 0.3); 
-        color: rgba(37, 211, 102, 0.8); 
+        border: 1px solid rgba(37, 211, 102, 0.3);
+        color: rgba(37, 211, 102, 0.8);
         padding: 12px 20px;
         border-radius: 8px;
         text-decoration: none;
         font-weight: 600;
-        transition: all 0.3s ease; 
+        transition: all 0.3s ease;
         width: 100%;
         will-change: transform, background, border-color, color, box-shadow;
     }
 
     .whatsapp-btn:hover {
         background: rgba(37, 211, 102, 0.1);
-        border-color: #25d366; 
+        border-color: #25d366;
         color: #25d366;
         box-shadow: 0 0 20px rgba(37, 211, 102, 0.1);
         transform: translateY(-2px);
     }
 
-    .whatsapp-btn i {
-        font-size: 18px;
-    }
+    .whatsapp-btn i { font-size: 18px; }
 
     .whatsapp-subtext {
         text-align: center;
@@ -1674,30 +1474,19 @@
         animation: contactFormReveal 1s forwards 0.3s;
     }
 
-    @keyframes contactFormReveal {
-        0% {
-            opacity: 0;
-            transform: translateX(-100px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: none;
-        }
-    }
-
     .animate-on-scroll.active.contact-information-reveal {
         animation: contactInformationReveal 1s forwards 0.5s;
     }
 
+    /* ============================================================
+    FOOTER
+    ============================================================ */
     .footer-section {
         width: 100%;
-        background-image: url('images/footer-background.png'); 
-        background-repeat: repeat;
-        background-size: 600px; 
-        border-top: 4px solid #a5c9ff; 
+        background-image: url('images/footer-background.png');
         background-repeat: no-repeat;
         background-size: cover;
+        border-top: 4px solid #a5c9ff;
         color: var(--text-body-2);
         position: relative;
         box-shadow: inset 0 0 0 2000px rgba(11, 15, 25, 0.6);
@@ -1725,7 +1514,7 @@
     }
 
     .footer-logo {
-        width: 180px; 
+        width: 180px;
         height: auto;
     }
 
@@ -1814,9 +1603,7 @@
         transition: color 0.3s ease;
     }
 
-    .footer-bottom-content p a:hover {
-        color: #a5c9ff;
-    }
+    .footer-bottom-content p a:hover { color: #a5c9ff; }
 
     .hours-col ul li span {
         font-weight: 600;
@@ -1871,10 +1658,11 @@
         transition: color 0.3s ease;
     }
 
-    .legal-links a:hover {
-        color: #a5c9ff;
-    }
+    .legal-links a:hover { color: #a5c9ff; }
 
+    /* ============================================================
+    SCROLL TO TOP BUTTON
+    ============================================================ */
     .scroll-to-top {
         position: fixed;
         bottom: 18px;
@@ -1910,126 +1698,144 @@
         box-shadow: 0 0 20px 4px rgba(165, 201, 255, 0.2);
     }
 
-    @keyframes contactInformationReveal {
-        0% {
-            opacity: 0;
-            transform: translateX(100px);
-        }
+    /* ============================================================
+    KEYFRAMES
+    ============================================================ */
+    @keyframes headerIn {
+        0%   { transform: translateY(-50px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
 
-        100% {
-            opacity: 1;
-            transform: none;
-        }
+    @keyframes wipeReveal {
+        0%   { opacity: 0; clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transform: translateX(-10px); }
+        100% { opacity: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateX(0); }
+    }
+
+    @keyframes buttonReveal {
+        0%   { opacity: 0; transform: translateX(-2px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes buttonReveal2 {
+        0%   { opacity: 0; transform: translateX(-2px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* FIX: animație separată pentru scroll-down cu translateX(-50%) */
+    @keyframes bounceScroll {
+        0%, 100% { transform: translateY(0) translateX(-50%); }
+        50%       { transform: translateY(10px) translateX(-50%); }
+    }
+
+    /* bounce fără translateX — folosit de more-memberships-icon */
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(10px); }
     }
 
     @keyframes fadeInScroll {
         to { opacity: 1; }
     }
 
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(10px);
-        }
-    }
-
-    @keyframes chooseBoxReveal {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes buttonReveal2 {
-        0% {
-            opacity: 0;
-            transform: translateX(-2px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
+    @keyframes fadeInScroll2 {
+        0%   { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes imgReveal {
-        0% {
-            opacity: 0;
-            transform: translateX(200px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        0%   { opacity: 0; transform: translateX(200px); }
+        100% { opacity: 1; transform: translateX(0); }
     }
 
     @keyframes imgReveal-2 {
-        0% {
-            opacity: 0;
-            transform: translateX(-200px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        0%   { opacity: 0; transform: translateX(-200px); }
+        100% { opacity: 1; transform: translateX(0); }
     }
 
     @keyframes listReveal {
-        0% {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        0%   { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes customFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    @keyframes chooseBoxReveal {
+        0%   { opacity: 0; }
+        100% { opacity: 1; }
     }
 
-    @keyframes customSlideLeft {
-        from { 
-            opacity: 0; 
-            transform: translateX(-100px); 
-        }
-        to { 
-            opacity: 1; 
-            transform: translateX(0); 
-        }
+    @keyframes membershipCardReveal {
+        0%   { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes membershipCardRevealRecommended {
+        0%   { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(-10px); }
+    }
+
+    @keyframes membershipPassReveal {
+        0%   { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes teamMemberReveal {
+        0%   { opacity: 0; transform: translateY(60px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes contactFormReveal {
+        0%   { opacity: 0; transform: translateX(-100px); }
+        100% { opacity: 1; transform: none; }
+    }
+
+    @keyframes contactInformationReveal {
+        0%   { opacity: 0; transform: translateX(100px); }
+        100% { opacity: 1; transform: none; }
+    }
+
+    @keyframes contactStackReveal {
+        0%   { opacity: 0; transform: translateY(60px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+    MEDIA QUERIES
+    ============================================================ */
+
+    /* --- sub 1400px: al doilea about-box se stivuiește --- */
     @media (max-width: 1400px) {
         .about-box:nth-child(2) {
             flex-direction: column-reverse;
             gap: 0px;
         }
 
+        /* FIX: spațiu între butoane și poza de dedesubt */
         .about-box-buttons {
             margin-bottom: 40px;
         }
+
+        /* FIX: photo nu mai are min-height fix când e stivuită */
+        .about-box:nth-child(2) .about-box-photo {
+            min-height: unset;
+            height: auto;
+        }
+
+        .about-box:nth-child(2) .about-box-photo img {
+            height: auto;
+            max-height: 420px;
+            object-fit: cover;
+        }
+
+        .about-box:nth-child(2) .about-box-text {
+            min-height: unset;
+        }
     }
 
+    /* --- sub 1175px: contact trece pe coloană singulară --- */
     @media (max-width: 1175px) {
-        .logo-section a {
-            width: 100%;
-            height: 100%;
-        }
+        .logo-section a   { width: 100%; height: 100%; }
+        .logo-section img { width: 80%; height: 80%; }
 
-        .logo-section img {
-            width: 80%;
-            height: 80%;
-        }
-
-        .scroll-to-top {
-            bottom: 75px;
-        }
+        .scroll-to-top { bottom: 75px; }
 
         .contact-grid {
             display: flex;
@@ -2040,161 +1846,160 @@
             padding-left: 20px;
             padding-right: 20px;
         }
+
+        /* FIX: animație din jos când formular + info sunt stivuite */
+        .animate-on-scroll.active.contact-form-reveal {
+            animation: contactStackReveal 0.8s forwards 0.2s !important;
+        }
+
+        .animate-on-scroll.active.contact-information-reveal {
+            animation: contactStackReveal 0.8s forwards 0.4s !important;
+        }
     }
 
+    /* --- sub 1024px: footer 2 coloane --- */
     @media (max-width: 1024px) {
-        .footer-content {
-            padding: 60px 40px; 
-        }
-        
-        .footer-grid {
-            grid-template-columns: 1fr 1fr; 
-            gap: 50px;
-        }
-
-        .footer-bottom {
-            padding: 25px 40px;
-        }
+        .footer-content { padding: 60px 40px; }
+        .footer-grid    { grid-template-columns: 1fr 1fr; gap: 50px; }
+        .footer-bottom  { padding: 25px 40px; }
     }
 
+    /* --- sub 965px: navbar mai strâns --- */
     @media (max-width: 965px) {
-        .logo-section img {
-            width: 85%;
-            height: 85%;
-        }
-
-        .nav-links ul {
-            gap: 30px;
-        }
-
-        .logo-section a {
-            width: 100%;
-            height: 100%;
-        }
-
-        .navbar {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .faq {
-            width: 85vw; /* Lățit puțin pentru tablete */
-        }
-        
-        .boxes {
-            gap: 50px 0px;
-            justify-content: space-around;
-        }
-
-        .choose-box {
-            min-width: 200px;
-            max-width: 300px;
-        }
+        .logo-section img  { width: 85%; height: 85%; }
+        .logo-section a    { width: 100%; height: 100%; }
+        .nav-links ul      { gap: 30px; }
+        .navbar            { padding-left: 20px; padding-right: 20px; }
+        .faq               { width: 85vw; }
+        .boxes             { gap: 50px 0px; justify-content: space-around; }
+        .choose-box        { min-width: 200px; max-width: 300px; }
     }
 
-    /* =================== HAMBURGER MENU =================== */
-    .hamburger {
-        display: none; 
-        cursor: pointer;
-        flex-direction: column;
-        gap: 6px;
-        z-index: 1001; 
-    }
-
-    .hamburger .bar {
-        display: block;
-        width: 32px;
-        height: 3px;
-        background-color: var(--text-title);
-        border-radius: 3px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0; 
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-
+    /* --- sub 850px: hamburger menu activ --- */
     @media (max-width: 850px) {
-        .hamburger {
-            display: flex; 
+        /* Hamburger vizibil */
+        .hamburger { display: flex; }
+
+        /* FIX: navbar mai mic pe mobil */
+        .navbar {
+            height: 65px !important;
+            padding: 0 20px !important;
         }
 
+        /* FIX: logo mic pe mobil */
+        .logo-section {
+            height: 32px !important;
+            width: auto;
+        }
+
+        /* FIX: hamburger X perfect simetric pe iOS */
+        .hamburger .bar {
+            width: 28px;
+            height: 2.5px;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* Nav links overlay */
         .nav-links {
             position: fixed;
-            left: -100%; 
-            top: 100px; 
+            left: -100%;
+            top: 65px !important;
             gap: 0;
             flex-direction: column;
-            background-color: rgba(11, 15, 25, 0.95); 
+            background-color: rgba(11, 15, 25, 0.98);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             width: 100%;
-            height: calc(100vh - 100px);
+            height: calc(100vh - 65px) !important;
             text-align: center;
             transition: 0.4s ease-in-out;
             box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
         }
 
-        .nav-links.active {
-            left: 0;
-        }
+        .nav-links.active { left: 0; }
 
         .nav-links ul {
-            flex-direction: column; 
+            flex-direction: column;
             padding-top: 50px;
             gap: 40px;
             width: 100%;
         }
 
-        .nav-links ul li a {
-            font-size: 22px; 
-        }
-        
+        .nav-links ul li a { font-size: 22px; }
+
         li a.contact-btn {
             width: fit-content;
             margin: 0 auto;
         }
 
-        .about-section, 
+        /* Sections padding */
+        .about-section,
         .memberships-section,
         .our-team-section,
-        .faq-section, 
+        .faq-section,
         .contact-section {
             padding-left: 40px;
             padding-right: 40px;
         }
+
+        /* FIX: spațiu gol eliminat între foto și Why Choose Us */
+        .about-box-text,
+        .about-box-photo {
+            min-height: unset !important;
+            flex: 1 1 auto;
+        }
+
+        .about-box-photo img {
+            height: auto !important;
+            max-height: 380px;
+            object-fit: cover;
+        }
+
+        .about-box { gap: 30px; }
+
+        /* FIX: FAQ padding redus */
+        .faq-container { padding: 20px 0; }
+        .faq           { width: 100% !important; }
+
+        .faq-question button {
+            font-size: 17px;
+            text-align: left;
+            padding-right: 10px;
+            gap: 15px;
+        }
+
+        .faq-answer span {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* FIX: scroll-to-top mai mic */
+        .scroll-to-top {
+            width: 40px;
+            height: 40px;
+            font-size: 17px;
+            bottom: 18px;
+            right: 18px;
+        }
     }
 
-    /* SCROLL BLOCKER */
-    body.no-scroll {
-        overflow: hidden !important;
-        touch-action: none !important;
-    }
-
-    /* =========================================
-       RESPONSIVE: FIX TABLETE MICI & MOBILE MARI (sub 788px)
-       ========================================= */
+    /* --- sub 788px: footer 2 col, diverse fix-uri --- */
     @media (max-width: 788px) {
-        .footer-content {
-            padding: 50px 20px;
-        }
-        
-        .footer-grid {
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px;
-        }
-
-        .footer-bottom {
-            padding: 25px 20px;
-        }
+        .footer-content { padding: 50px 20px; }
+        .footer-grid    { grid-template-columns: 1fr 1fr; gap: 40px; }
+        .footer-bottom  { padding: 25px 20px; }
 
         .footer-bottom-content {
             flex-direction: column;
@@ -2202,124 +2007,127 @@
             text-align: center;
         }
 
-        .legal-links {
-            justify-content: center;
-            gap: 20px;
-        }
+        .legal-links { justify-content: center; gap: 20px; }
 
-        .boxes {
-            gap: 50px 20px;
-            justify-content: space-around;
-        }
+        .boxes      { gap: 50px 20px; justify-content: space-around; }
+        .choose-box { min-width: 200px; max-width: 260px; }
 
-        .choose-box {
-            min-width: 200px;
-            max-width: 260px;
-        }
+        .about-box:nth-child(2) .about-box-photo { max-height: 440px; }
 
-        .about-box:nth-child(2) .about-box-photo {
-            max-height: 440px;
-        }
+        .faq           { width: 100% !important; }
 
-        /* ----- REPARAȚII BUG-URI POZE AICI ----- */
-        
-        /* 1. FAQ-ul pe 100% lățime ca să încapă textul */
-        .faq {
-            width: 100% !important; 
-        }
         .faq-question button {
             font-size: 18px;
             text-align: left;
             padding-right: 15px;
         }
-        .faq-answer span {
-            font-size: 15px;
-        }
 
-        /* 2. Butoanele (Book a Session / Our Team) stivuite din timp */
+        .faq-answer span { font-size: 15px; }
+
         .about-box-buttons {
             flex-direction: column;
             width: 100%;
             gap: 15px;
         }
-        .about-box-buttons button {
-            width: 100%;
-        }
 
-        /* 3. Forțăm titlurile să rămână mereu pe STÂNGA, cu bară albastră */
-        .about-box-text, 
-        .why-choose-us-box, 
-        .memberships-content, 
-        .our-team-content, 
-        .faq-content, 
+        .about-box-buttons button { width: 100%; }
+
+        .about-box-text,
+        .why-choose-us-box,
+        .memberships-content,
+        .our-team-content,
+        .faq-content,
         .contact-content {
             align-items: flex-start !important;
             text-align: left !important;
         }
     }
 
-    /* =========================================
-       RESPONSIVE: HERO SECTION (sub 700px)
-       ========================================= */
+    /* --- sub 700px: hero centrat + Apex Standards grid --- */
     @media (max-width: 700px) {
         .hero-content {
-            padding: 0 20px; 
-            justify-content: center; 
+            padding: 0 20px;
+            justify-content: center;
         }
 
         .hero-box {
             width: 100%;
             height: auto;
-            align-items: center; 
-            text-align: center;  
+            align-items: center;
+            text-align: center;
             padding: 0;
-            margin-top: -50px; 
+            margin-top: -50px;
         }
 
-        .hero-box h1 {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .hero-box span {
-            font-size: 16px;
-        }
+        .hero-box h1   { font-size: 40px; margin-bottom: 15px; }
+        .hero-box span { font-size: 16px; }
 
         .hero-buttons {
-            flex-direction: column; 
-            gap: 15px; 
+            flex-direction: column;
+            gap: 15px;
             width: 100%;
             align-items: center;
             margin-top: 30px;
         }
 
         .hero-buttons a {
-            width: 100%; 
-            max-width: 320px; 
+            width: 100%;
+            max-width: 320px;
             height: 55px;
             font-size: 18px;
         }
+
+        /* FIX: Apex Standards — grid 2 rânduri pe mobil */
+        .about-box-text ul li {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            grid-template-rows: auto auto;
+            row-gap: 4px;
+            column-gap: 8px;
+            align-items: start;
+        }
+
+        .about-box-text ul li > i:first-child {
+            grid-row: 1;
+            grid-column: 1;
+            padding-top: 2px;
+        }
+
+        .about-box-text ul li > span:first-of-type {
+            grid-row: 1;
+            grid-column: 2;
+            font-weight: 700;
+        }
+
+        /* Săgeata ascunsă pe mobil */
+        .about-box-text ul li > .fa-arrow-right-long { display: none; }
+
+        .about-box-text ul li > span:last-of-type {
+            grid-row: 2;
+            grid-column: 2;
+            margin-left: 0 !important;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 14px;
+            line-height: 1.5;
+        }
     }
 
-    /* =========================================
-       RESPONSIVE: TELEFOANE (sub 550px) - DETALII FINALE
-       ========================================= */
+    /* --- sub 550px: telefoane mici --- */
     @media (max-width: 550px) {
-        .about-section, 
+        .about-section,
         .memberships-section,
         .our-team-section,
-        .faq-section, 
+        .faq-section,
         .contact-section {
             padding-left: 20px;
             padding-right: 20px;
         }
 
-        /* Titlurile principale - Aplicăm strict mărimea, alinierea vine de sus */
-        .about-box-text h1, 
-        .why-choose-us-box h1, 
-        .memberships-content h1, 
-        .our-team-content h1, 
-        .faq-content h1, 
+        .about-box-text h1,
+        .why-choose-us-box h1,
+        .memberships-content h1,
+        .our-team-content h1,
+        .faq-content h1,
         .contact-content h1 {
             font-size: 28px;
             border-left: 6px solid #a5c9ff !important;
@@ -2332,17 +2140,18 @@
             margin-top: 20px;
         }
 
-        /* Reparație Apex Standards (Să nu se mai sugrume iconițele) */
+        .faq-question button { font-size: 15px; }
+
+        /* Why Choose Us — coloană verticală */
         .boxes {
             flex-direction: column;
             align-items: center;
             gap: 30px 0;
         }
-        
-        /* Aici e magia: trecem de la rând orizontal la coloană verticală */
+
         .choose-box {
             display: flex !important;
-            flex-direction: column !important; /* Textul ajunge sub titlu/iconiță */
+            flex-direction: column !important;
             align-items: flex-start !important;
             width: 100%;
             max-width: 100%;
@@ -2350,10 +2159,9 @@
             gap: 10px !important;
             text-align: left;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(165, 201, 255, 0.1); /* Linie subtilă despărțitoare */
+            border-bottom: 1px solid rgba(165, 201, 255, 0.1);
         }
 
-        /* Lăsăm textul să ocupe tot spațiul disponibil */
         .choose-box span,
         .choose-box p,
         .choose-box h3 {
@@ -2364,327 +2172,50 @@
             white-space: normal !important;
         }
 
-        /* Ascundem săgețile, nu mai au sens pe verticală */
         .choose-box i.fa-arrow-right,
-        .choose-box i.fa-long-arrow-right {
-            display: none !important;
-        }
+        .choose-box i.fa-long-arrow-right { display: none !important; }
 
-        /* Facem iconița principală mai evidentă */
         .choose-box > i:first-child {
             font-size: 24px !important;
             color: #a5c9ff !important;
             margin-bottom: 5px;
         }
 
-        /* Memberships */
-        .membership-card {
-            width: 100%;
-            padding: 20px 15px;
-        }
-        .principal-memberships {
-            flex-direction: column;
-            gap: 30px;
-        }
+        /* Membership cards */
+        .membership-card         { width: 100%; padding: 20px 15px; }
+        .principal-memberships   { flex-direction: column; gap: 30px; }
+
         .membership-informations {
             flex-direction: column;
             align-items: flex-start;
             gap: 10px;
         }
+
         .membership-right-side {
             width: 100%;
             flex-direction: row;
             justify-content: space-between;
             margin-top: 10px;
         }
-        button.show-details {
-            transform: none;
-        }
 
-        /* Formularul de Contact */
-        .input-row {
-            flex-direction: column;
-            gap: 15px;
-        }
-        .form-buttons {
-            flex-direction: column;
-        }
-        .submit-btn, .reset-btn {
-            width: 100%;
-        }
+        button.show-details { transform: none; }
 
-        /* Footer pe 1 coloană */
-        .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-    }
+        /* Contact form */
+        .input-row       { flex-direction: column; gap: 15px; }
+        .form-buttons    { flex-direction: column; }
+        .submit-btn,
+        .reset-btn       { width: 100%; }
 
-    /* ============================================================
-   APEX FITNESS — MOBILE RESPONSIVE FIXES
-   Adaugă acest bloc la FINALUL fișierului style.css
-   ============================================================ */
+        /* Footer 1 coloană */
+        .footer-grid { grid-template-columns: 1fr; gap: 30px; }
 
-
-/* ----------------------------------------------------------
-   FIX 1: Săgeata scroll-down din Hero — centrare corectă
-   Problema: al doilea @keyframes bounce din CSS suprascrie
-   primul și pierde translateX(-50%), dezaxând săgeata.
-   Soluția: folosim o animație separată pentru scroll-down.
-   ---------------------------------------------------------- */
-.scroll-down {
-    animation: fadeInScroll 0.5s forwards 1s, bounceScroll 2s infinite 1.3s !important;
-}
-
-@keyframes bounceScroll {
-    0%, 100% { transform: translateY(0) translateX(-50%); }
-    50%       { transform: translateY(10px) translateX(-50%); }
-}
-
-
-/* ----------------------------------------------------------
-   FIX 2: "The Apex Standards" — iconițele și lista pe mobil
-   Problema: li-urile au flex-direction: row cu iconiță +
-   span + săgeată + span, care se sugrumă pe ecrane mici.
-   Soluția: pe mobil trecem la layout în două rânduri și
-   ascundem săgeata care nu mai are sens vizual.
-   ---------------------------------------------------------- */
-@media (max-width: 700px) {
-    .about-box-text ul li {
-        display: grid;
-        grid-template-columns: 28px 1fr;
-        grid-template-rows: auto auto;
-        row-gap: 4px;
-        column-gap: 8px;
-        align-items: start;
-    }
-
-    /* Iconița principală (dumbbell, user-check etc.) — rândul 1, coloana 1 */
-    .about-box-text ul li > i:first-child {
-        grid-row: 1;
-        grid-column: 1;
-        padding-top: 2px;
-    }
-
-    /* Numele (Elite Equipment, Expert Coaching etc.) — rândul 1, coloana 2 */
-    .about-box-text ul li > span:first-of-type {
-        grid-row: 1;
-        grid-column: 2;
-        font-weight: 700;
-    }
-
-    /* Săgeata -> ascunsă pe mobil */
-    .about-box-text ul li > .fa-arrow-right-long {
-        display: none;
-    }
-
-    /* Descrierea — rândul 2, coloana 2 (indentată sub nume) */
-    .about-box-text ul li > span:last-of-type {
-        grid-row: 2;
-        grid-column: 2;
-        margin-left: 0 !important;
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 14px;
-        line-height: 1.5;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   FIX 3: Butoanele "Book a Session / Our Team" peste imagine
-   Problema: .about-box-photo are min-height: 400px care o
-   extinde și iese deasupra butoanelor din secțiunea stivuită.
-   ---------------------------------------------------------- */
-@media (max-width: 1400px) {
-    .about-box:nth-child(2) .about-box-photo {
-        min-height: unset;
-        height: auto;
-    }
-
-    .about-box:nth-child(2) .about-box-photo img {
-        height: auto;
-        max-height: 420px;
-        object-fit: cover;
-    }
-
-    .about-box:nth-child(2) .about-box-text {
-        min-height: unset;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   FIX 4: Săgeata "More Memberships" — centrare pe ecran
-   Problema: <a> e element inline, text-align: center nu
-   are efect. Trebuie display: block + width: 100%.
-   ---------------------------------------------------------- */
-.more-memberships-icon {
-    display: block !important;
-    width: 100%;
-    text-align: center;
-}
-
-
-/* ----------------------------------------------------------
-   FIX 5: FAQ — itemii sunt prea mici pe mobil
-   Problema: .faq-container are padding: 30px 100px care
-   lasă prea puțin spațiu pentru text pe telefon.
-   ---------------------------------------------------------- */
-@media (max-width: 850px) {
-    .faq-container {
-        padding: 20px 0;
-    }
-
-    .faq {
-        width: 100% !important;
-    }
-
-    .faq-question button {
-        font-size: 17px;
-        text-align: left;
-        padding-right: 10px;
-        gap: 15px;
-    }
-
-    .faq-answer span {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-}
-
-@media (max-width: 550px) {
-    .faq-question button {
-        font-size: 15px;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   SCROLL TO TOP — ajustat pentru mobil
-   Mai mic, mai discret, fără să deranjeze conținutul.
-   ---------------------------------------------------------- */
-@media (max-width: 850px) {
-    .scroll-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 17px;
-        bottom: 18px;
-        right: 18px;
-    }
-}
-
-@media (max-width: 550px) {
-    .scroll-to-top {
-        width: 36px;
-        height: 36px;
-        font-size: 15px;
-        bottom: 14px;
-        right: 14px;
-        box-shadow: 0 0 12px 2px rgba(165, 201, 255, 0.2);
-    }
-}
-
-@media (max-width: 850px) {
-    .about-box-text,
-    .about-box-photo {
-        min-height: unset !important;
-        flex: 1 1 auto;
-    }
-
-    .about-box-photo img {
-        height: auto !important;
-        max-height: 380px;
-        object-fit: cover;
-    }
-
-    .about-box {
-        gap: 30px;
-    }
-}
-
-/* --- More Memberships — text + săgeată centrate --- */
-.memberships-content h3.more-memberships {
-    width: 100%;
-    text-align: center;
-}
-
-@media (max-width: 850px) {
-    .logo-section {
-        height: 45px;
-        width: auto;
-    }
-}
-
-/* --- Hamburger menu — background opac + X fix --- */
-@media (max-width: 850px) {
-    .nav-links {
-        background-color: rgba(11, 15, 25, 0.98) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    /* X-ul — spațierea dintre bare era prea mică pe mobile */
-    .hamburger .bar {
-        width: 28px;
-        height: 2.5px;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
-
-@media (max-width: 1175px) {
-    .animate-on-scroll.active.contact-form-reveal {
-        animation: contactStackReveal 0.8s forwards 0.2s !important;
-    }
-
-    .animate-on-scroll.active.contact-information-reveal {
-        animation: contactStackReveal 0.8s forwards 0.4s !important;
-    }
-
-    @keyframes contactStackReveal {
-        0% {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
+        /* Scroll to top mai mic */
+        .scroll-to-top {
+            width: 36px;
+            height: 36px;
+            font-size: 15px;
+            bottom: 14px;
+            right: 14px;
+            box-shadow: 0 0 12px 2px rgba(165, 201, 255, 0.2);
         }
     }
-}
-
-@media (max-width: 850px) {
-    .logo-section {
-        height: 45px;
-        width: auto;
-    }
-}
-
-/* --- Hamburger menu — background opac + X fix --- */
-@media (max-width: 850px) {
-    .nav-links {
-        background-color: rgba(11, 15, 25, 0.98) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    /* X-ul — spațierea dintre bare era prea mică pe mobile */
-    .hamburger .bar {
-        width: 28px;
-        height: 2.5px;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
