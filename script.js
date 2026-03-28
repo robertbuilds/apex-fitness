@@ -99,25 +99,26 @@
 
         // --- Hamburger Menu Logic ---
     const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-links");
-    const body = document.body; // Selectăm body-ul
+const navMenu = document.querySelector(".nav-links");
+const body = document.body; // Selectăm body-ul
 
-    // Când apăsăm pe hamburger
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
+// 1. Când apeși pe cele 3 liniuțe (deschizi/închizi meniul)
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    
+    // Aici e magia: blochează sau deblochează scroll-ul
+    body.classList.toggle("no-scroll");
+});
+
+// 2. Când apeși pe oricare link din meniu (ca să te ducă la secțiune)
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        // Închide meniul
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
         
-        // Blocăm sau deblocăm scroll-ul paginii
-        body.classList.toggle("no-scroll");
+        // DEBLOCHează scroll-ul ca să poată coborî pagina la secțiunea dorită
+        body.classList.remove("no-scroll");
     });
-
-    // Când dăm click pe orice link din meniu, îl închidem automat
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
-            
-            // Deblocăm scroll-ul ca să poată naviga spre secțiune
-            body.classList.remove("no-scroll");
-        });
-    });
+});

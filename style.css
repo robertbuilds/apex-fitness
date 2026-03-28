@@ -21,6 +21,8 @@
     html {
         scroll-behavior: smooth;
         scrollbar-width: thin;
+        overflow-x: hidden;
+        max-width: 100%;
     }
 
     body {
@@ -28,6 +30,7 @@
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
+        max-width: 100%;
     }
 
     .header-container {
@@ -2095,7 +2098,7 @@
 
     .hamburger .bar {
         display: block;
-        width: 28px;
+        width: 32px;
         height: 3px;
         background-color: var(--text-title);
         border-radius: 3px;
@@ -2105,7 +2108,6 @@
     /* Animația când e activ (Se face X) */
     .hamburger.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
-        background-color: #a5c9ff; /* Îl facem albastru când e deschis */
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -2114,7 +2116,6 @@
 
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
-        background-color: #a5c9ff;
     }
 
     @media (max-width: 850px) {
@@ -2176,7 +2177,8 @@
     }
 
     body.no-scroll {
-        overflow: hidden;
+        overflow: hidden !important;
+        height: 100vh !important;
     }
 
     @media (max-width: 788px) {
@@ -2286,19 +2288,20 @@
     /* =========================================
        RESPONSIVE: Telefoane (sub 550px) - REPARAȚII FINALE
        ========================================= */
+    /* =========================================
+       RESPONSIVE: Telefoane (sub 550px) - REPARAȚII FINALE
+       ========================================= */
     @media (max-width: 550px) {
-        
-        /* 1. Resetăm padding-ul principal pentru TOATE secțiunile */
         .about-section, 
         .memberships-section,
         .our-team-section,
         .faq-section, 
         .contact-section {
-            padding-left: 15px;
-            padding-right: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
-        /* 2. Titlurile principale */
+        /* 2. Titlurile principale - Rămân pe stânga, cu bara lor originală */
         .about-box-text h1, 
         .why-choose-us-box h1, 
         .memberships-content h1, 
@@ -2306,45 +2309,46 @@
         .faq-content h1, 
         .contact-content h1 {
             font-size: 28px;
+            /* Am șters "border-left: none", deci va prelua automat linia frumoasă de pe desktop! */
         }
 
-        /* 3. About Section (aliniere pe centru pentru mobil) */
-        .about-box-text {
-            text-align: center;
-            align-items: center; /* Centrează și h1 care are border-left */
-        }
-        .about-box-text h1 {
-            border-left: none;
-            border-bottom: 4px solid #a5c9ff;
-            padding-left: 0;
-            padding-bottom: 5px;
+        /* 3. Butoanele (ex: Book a Session / Our Team) */
+        .about-box-buttons {
+            flex-direction: column;
+            width: 100%;
+            gap: 15px;
+            padding: 0;
+            margin-top: 20px;
         }
         .about-box-buttons button {
             width: 100%;
         }
 
-        /* 4. Choose Us Boxes (1 pe rând) */
+        /* 4. Choose Us Boxes (1 pe rând, se întind pe tot ecranul) */
         .boxes {
             flex-direction: column;
             align-items: center;
+            gap: 30px 0;
         }
         .choose-box {
             width: 100%;
-            max-width: 100%; /* Lasă-l să se întindă pe tot ecranul telefonului */
+            max-width: 100%;
+            min-width: unset;
         }
 
         /* 5. Memberships */
         .membership-card {
-            width: 100%; /* Ăsta e cel care iese din ecran de obicei! */
+            width: 100%;
             padding: 20px 15px;
         }
         .principal-memberships {
-            flex-direction: column; /* Abonamentele unul sub altul */
+            flex-direction: column;
             gap: 30px;
         }
         .membership-informations {
             flex-direction: column;
             align-items: flex-start;
+            gap: 10px;
         }
         .membership-right-side {
             width: 100%;
@@ -2356,17 +2360,19 @@
             transform: none;
         }
 
-        /* 6. FAQ - Lățime 100% */
+        /* 6. FAQ - Lățime 100% și aliniat frumos la stânga */
         .faq {
             width: 100%;
         }
         .faq-question button {
-            text-align: left; /* Pe telefon trebuie citit de la stânga la dreapta clar */
+            text-align: left;
+            font-size: 17px;
+            padding-right: 10px;
         }
 
         /* 7. Formularul de Contact */
         .input-row {
-            flex-direction: column; /* Inputs pe un singur rând */
+            flex-direction: column;
             gap: 15px;
         }
         .form-buttons {
@@ -2378,7 +2384,7 @@
 
         /* 8. Footer pe 1 coloană */
         .footer-grid {
-            grid-template-columns: 1fr; /* Totul una sub alta în footer */
+            grid-template-columns: 1fr;
             gap: 30px;
         }
     }
