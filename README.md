@@ -13,8 +13,6 @@ You can view the website live here:
 View Live Preview
 </a>
 
-<br><br>
-
 ## Features
 
 * 🏋️ Full responsive design (desktop, tablet, mobile)
