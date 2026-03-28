@@ -344,7 +344,6 @@
         transform: scale(0.96);
     }
 
-    /* FIX: transform setat direct ca să nu apară în dreapta înainte de animație */
     .scroll-down {
         position: absolute;
         bottom: 30px;
@@ -474,7 +473,6 @@
         border-radius: 12px;
     }
 
-    /* About scroll animations */
     .animate-on-scroll { opacity: 0; }
 
     .animate-on-scroll.active.about-h1-reveal    { animation: wipeReveal 1.35s forwards; }
@@ -550,7 +548,6 @@
     .animate-on-scroll.active.about-button-1-reveal { animation: buttonReveal2 1s forwards 0.7s; }
     .animate-on-scroll.active.about-button-2-reveal { animation: buttonReveal2 1s forwards 0.8s; }
 
-    /* Why Choose Us */
     .why-choose-us-box {
         margin-top: 50px;
         display: flex;
@@ -816,7 +813,6 @@
         font-weight: 500;
     }
 
-    /* FIX: display block + width 100% pentru centrare corectă */
     .memberships-content h3.more-memberships {
         margin-top: 50px;
         font-size: 22px;
@@ -827,7 +823,6 @@
 
     .animate-on-scroll.active.more-memberships-h3-reveal { animation: fadeInScroll2 0.5s forwards 0.1s; }
 
-    /* FIX: display block + width 100% pentru centrare corectă */
     .more-memberships-icon {
         display: block;
         width: 100%;
@@ -1722,13 +1717,11 @@
         100% { opacity: 1; transform: translateX(0); }
     }
 
-    /* FIX: animație separată pentru scroll-down cu translateX(-50%) */
     @keyframes bounceScroll {
         0%, 100% { transform: translateY(0) translateX(-50%); }
         50%       { transform: translateY(10px) translateX(-50%); }
     }
 
-    /* bounce fără translateX — folosit de more-memberships-icon */
     @keyframes bounce {
         0%, 100% { transform: translateY(0); }
         50%       { transform: translateY(10px); }
@@ -1802,19 +1795,16 @@
     MEDIA QUERIES
     ============================================================ */
 
-    /* --- sub 1400px: al doilea about-box se stivuiește --- */
     @media (max-width: 1400px) {
         .about-box:nth-child(2) {
             flex-direction: column-reverse;
             gap: 0px;
         }
 
-        /* FIX: spațiu între butoane și poza de dedesubt */
         .about-box-buttons {
             margin-bottom: 40px;
         }
 
-        /* FIX: photo nu mai are min-height fix când e stivuită */
         .about-box:nth-child(2) .about-box-photo {
             min-height: unset;
             height: auto;
@@ -1831,7 +1821,6 @@
         }
     }
 
-    /* --- sub 1175px: contact trece pe coloană singulară --- */
     @media (max-width: 1175px) {
         .logo-section a   { width: 100%; height: 100%; }
         .logo-section img { width: 80%; height: 80%; }
@@ -1848,7 +1837,6 @@
             padding-right: 20px;
         }
 
-        /* FIX: animație din jos când formular + info sunt stivuite */
         .animate-on-scroll.active.contact-form-reveal {
             animation: contactStackReveal 0.8s forwards 0.2s !important;
         }
@@ -1858,14 +1846,12 @@
         }
     }
 
-    /* --- sub 1024px: footer 2 coloane --- */
     @media (max-width: 1024px) {
         .footer-content { padding: 60px 40px; }
         .footer-grid    { grid-template-columns: 1fr 1fr; gap: 50px; }
         .footer-bottom  { padding: 25px 40px; }
     }
 
-    /* --- sub 965px: navbar mai strâns --- */
     @media (max-width: 965px) {
         .logo-section img  { width: 85%; height: 85%; }
         .logo-section a    { width: 100%; height: 100%; }
@@ -1876,18 +1862,14 @@
         .choose-box        { min-width: 200px; max-width: 300px; }
     }
 
-    /* --- sub 850px: hamburger menu activ --- */
     @media (max-width: 875px) {
-        /* Hamburger vizibil */
         .hamburger { display: flex; }
 
-        /* FIX: navbar mai mic pe mobil */
         .navbar {
             height: 65px !important;
             padding: 0 20px !important;
         }
 
-        /* FIX: logo mic pe mobil */
         .logo-section {
             height: 34px !important;
             width: auto;
@@ -1898,7 +1880,6 @@
             height: 100% !important;
         }
 
-        /* FIX: hamburger X perfect simetric pe iOS */
         .hamburger .bar {
             width: 28px;
             height: 2.5px;
@@ -1917,7 +1898,6 @@
             transform: translateY(-8.5px) rotate(-45deg) !important;
         }
 
-        /* Nav links overlay */
         .nav-links {
             position: fixed;
             left: -100%;
@@ -1950,7 +1930,6 @@
             margin: 0 auto;
         }
 
-        /* Sections padding */
         .about-section,
         .memberships-section,
         .our-team-section,
@@ -1960,7 +1939,6 @@
             padding-right: 40px;
         }
 
-        /* FIX: spațiu gol eliminat între foto și Why Choose Us */
         .about-box-text,
         .about-box-photo {
             min-height: unset !important;
@@ -1975,7 +1953,6 @@
 
         .about-box { gap: 30px; }
 
-        /* FIX: FAQ padding redus */
         .faq-container { padding: 20px 0; }
         .faq           { width: 100% !important; }
 
@@ -1991,7 +1968,6 @@
             line-height: 1.7;
         }
 
-        /* FIX: scroll-to-top mai mic */
         .scroll-to-top {
             width: 40px;
             height: 40px;
@@ -2001,7 +1977,6 @@
         }
     }
 
-    /* --- sub 788px: footer 2 col, diverse fix-uri --- */
     @media (max-width: 788px) {
         .footer-content { padding: 50px 20px; }
         .footer-grid    { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -2049,7 +2024,6 @@
         }
     }
 
-    /* --- sub 700px: hero centrat + Apex Standards grid --- */
     @media (max-width: 700px) {
         .hero-content {
             padding: 0 20px;
@@ -2083,7 +2057,6 @@
             font-size: 18px;
         }
 
-        /* FIX: Apex Standards — grid 2 rânduri pe mobil */
         .about-box-text ul li {
             display: grid;
             grid-template-columns: 28px 1fr;
@@ -2105,7 +2078,6 @@
             font-weight: 700;
         }
 
-        /* Săgeata ascunsă pe mobil */
         .about-box-text ul li > .fa-arrow-right-long { display: none; }
 
         .about-box-text ul li > span:last-of-type {
@@ -2118,7 +2090,6 @@
         }
     }
 
-    /* --- sub 550px: telefoane mici --- */
     @media (max-width: 550px) {
         .about-section,
         .memberships-section,
@@ -2148,7 +2119,6 @@
 
         .faq-question button { font-size: 15px; }
 
-        /* Why Choose Us — coloană verticală */
         .boxes {
             flex-direction: column;
             align-items: center;
@@ -2187,7 +2157,6 @@
             margin-bottom: 5px;
         }
 
-        /* Membership cards */
         .membership-card         { width: 100%; padding: 20px 15px; }
         .principal-memberships   { flex-direction: column; gap: 30px; }
 
@@ -2206,16 +2175,13 @@
 
         button.show-details { transform: none; }
 
-        /* Contact form */
         .input-row       { flex-direction: column; gap: 15px; }
         .form-buttons    { flex-direction: column; }
         .submit-btn,
         .reset-btn       { width: 100%; }
 
-        /* Footer 1 coloană */
         .footer-grid { grid-template-columns: 1fr; gap: 30px; }
 
-        /* Scroll to top mai mic */
         .scroll-to-top {
             width: 36px;
             height: 36px;
@@ -2227,12 +2193,12 @@
     }
 
     @media (max-width: 700px) {
-    .hero-section {
-        background: linear-gradient(
-            rgba(11, 15, 25, 0.65),
-            rgba(11, 15, 25, 0.65)
-        ), url('images/hero-photo.jpg');
-        background-size: cover;
-        background-position: center 30%;
+        .hero-section {
+            background: linear-gradient(
+                rgba(11, 15, 25, 0.65),
+                rgba(11, 15, 25, 0.65)
+            ), url('images/hero-photo.jpg');
+            background-size: cover;
+            background-position: center 30%;
+        }
     }
-}

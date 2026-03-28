@@ -1,9 +1,9 @@
     if (history.scrollRestoration) {
-        history.scrollRestoration = 'manual';
-    }
-    window.onbeforeunload = () => {
-        window.scrollTo(0, 0);
-    };
+    history.scrollRestoration = 'manual';
+}
+    window.addEventListener('load', () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
 
     const sections = document.querySelectorAll('div[id]');
     const navLinks = document.querySelectorAll('.nav-links ul li a');
@@ -104,28 +104,20 @@
         });
     });
 
-        // --- Hamburger Menu Logic ---
     const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-links");
-const body = document.body; // Selectăm body-ul
+    const navMenu = document.querySelector(".nav-links");
+    const body = document.body;
 
-// 1. Când apeși pe cele 3 liniuțe (deschizi/închizi meniul)
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-    
-    // Aici e magia: blochează sau deblochează scroll-ul
-    body.classList.toggle("no-scroll");
-});
-
-// 2. Când apeși pe oricare link din meniu (ca să te ducă la secțiune)
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        // Închide meniul
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
-        
-        // DEBLOCHează scroll-ul ca să poată coborî pagina la secțiunea dorită
-        body.classList.remove("no-scroll");
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        body.classList.toggle("no-scroll");
     });
-});
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            body.classList.remove("no-scroll");
+        });
+    });
