@@ -2226,3 +2226,159 @@
             max-height: 440px;
         }
     }
+
+    /* =========================================
+       RESPONSIVE: Telefoane (sub 700px) - HERO SECTION
+       ========================================= */
+    @media (max-width: 700px) {
+        
+        /* 1. Reducem padding-ul lateral imens */
+        .hero-content {
+            padding: 0 20px; 
+            justify-content: center; /* Centrăm totul pe ecran */
+        }
+
+        /* 2. Anulăm lățimea fixă de 650px */
+        .hero-box {
+            width: 100%;
+            height: auto;
+            align-items: center; /* Centrează textul și butoanele pe orizontală */
+            text-align: center;  /* Textul arată mult mai bine centrat pe mobil */
+            padding: 0;
+            margin-top: -50px; /* Ridicăm un pic conținutul dacă e prea jos */
+        }
+
+        /* 3. Micșorăm textele ca să nu se spargă urât pe mai multe rânduri */
+        .hero-box h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero-box span {
+            font-size: 16px;
+        }
+
+        /* 4. Magia la butoane: le punem unul sub altul */
+        .hero-buttons {
+            flex-direction: column; /* Schimbă ordinea din stânga-dreapta în sus-jos */
+            gap: 15px; /* Reducem spațiul enorm dintre ele */
+            width: 100%;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .hero-buttons a {
+            width: 100%; /* Să se întindă frumos */
+            max-width: 320px; /* Dar să nu depășească 320px ca să nu arate gigantic */
+            height: 55px;
+            font-size: 18px;
+        }
+
+        .faq-question button {
+            font-size: 17px;
+        }
+
+        .faq-answer span {
+            font-size: 13px;
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE: Telefoane (sub 550px) - REPARAȚII FINALE
+       ========================================= */
+    @media (max-width: 550px) {
+        
+        /* 1. Resetăm padding-ul principal pentru TOATE secțiunile */
+        .about-section, 
+        .memberships-section,
+        .our-team-section,
+        .faq-section, 
+        .contact-section {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* 2. Titlurile principale */
+        .about-box-text h1, 
+        .why-choose-us-box h1, 
+        .memberships-content h1, 
+        .our-team-content h1, 
+        .faq-content h1, 
+        .contact-content h1 {
+            font-size: 28px;
+        }
+
+        /* 3. About Section (aliniere pe centru pentru mobil) */
+        .about-box-text {
+            text-align: center;
+            align-items: center; /* Centrează și h1 care are border-left */
+        }
+        .about-box-text h1 {
+            border-left: none;
+            border-bottom: 4px solid #a5c9ff;
+            padding-left: 0;
+            padding-bottom: 5px;
+        }
+        .about-box-buttons button {
+            width: 100%;
+        }
+
+        /* 4. Choose Us Boxes (1 pe rând) */
+        .boxes {
+            flex-direction: column;
+            align-items: center;
+        }
+        .choose-box {
+            width: 100%;
+            max-width: 100%; /* Lasă-l să se întindă pe tot ecranul telefonului */
+        }
+
+        /* 5. Memberships */
+        .membership-card {
+            width: 100%; /* Ăsta e cel care iese din ecran de obicei! */
+            padding: 20px 15px;
+        }
+        .principal-memberships {
+            flex-direction: column; /* Abonamentele unul sub altul */
+            gap: 30px;
+        }
+        .membership-informations {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .membership-right-side {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        button.show-details {
+            transform: none;
+        }
+
+        /* 6. FAQ - Lățime 100% */
+        .faq {
+            width: 100%;
+        }
+        .faq-question button {
+            text-align: left; /* Pe telefon trebuie citit de la stânga la dreapta clar */
+        }
+
+        /* 7. Formularul de Contact */
+        .input-row {
+            flex-direction: column; /* Inputs pe un singur rând */
+            gap: 15px;
+        }
+        .form-buttons {
+            flex-direction: column;
+        }
+        .submit-btn, .reset-btn {
+            width: 100%;
+        }
+
+        /* 8. Footer pe 1 coloană */
+        .footer-grid {
+            grid-template-columns: 1fr; /* Totul una sub alta în footer */
+            gap: 30px;
+        }
+    }
