@@ -4,7 +4,7 @@ Modern **Gym Website** designed for a premium fitness facility.
 The website presents memberships, coaching staff, and contact information with smooth scroll animations and a fully responsive layout.
 
 ## Preview
-![Preview]()
+![Preview](https://imgur.com/a/VdAGTcw)
 
 ## Live Preview
 You can view the website live here:
