@@ -2178,7 +2178,7 @@
 
     body.no-scroll {
         overflow: hidden !important;
-        height: 100vh !important;
+        touch-action: none !important;
     }
 
     @media (max-width: 788px) {
