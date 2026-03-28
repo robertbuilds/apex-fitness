@@ -2007,7 +2007,11 @@
     @media (max-width: 1400px) {
         .about-box:nth-child(2) {
             flex-direction: column-reverse;
-            gap: 0px
+            gap: 0px;
+        }
+
+        .about-box-buttons {
+            margin-bottom: 40px;
         }
     }
 
@@ -2073,7 +2077,7 @@
         }
 
         .faq {
-            width: 75vw;
+            width: 85vw; /* Lățit puțin pentru tablete */
         }
         
         .boxes {
@@ -2085,15 +2089,15 @@
             min-width: 200px;
             max-width: 300px;
         }
-
     }
 
+    /* =================== HAMBURGER MENU =================== */
     .hamburger {
-        display: none; /* Îl ascundem pe PC */
+        display: none; 
         cursor: pointer;
         flex-direction: column;
         gap: 6px;
-        z-index: 1001; /* Ca să stea mereu deasupra meniului */
+        z-index: 1001; 
     }
 
     .hamburger .bar {
@@ -2105,13 +2109,12 @@
         transition: all 0.3s ease-in-out;
     }
 
-    /* Animația când e activ (Se face X) */
     .hamburger.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
 
     .hamburger.active .bar:nth-child(2) {
-        opacity: 0; /* Liniuța din mijloc dispare */
+        opacity: 0; 
     }
 
     .hamburger.active .bar:nth-child(3) {
@@ -2120,18 +2123,17 @@
 
     @media (max-width: 850px) {
         .hamburger {
-            display: flex; /* Arătăm butonul pe ecrane mici */
+            display: flex; 
         }
 
-        /* Ascundem meniul normal și îl facem să vină din dreapta */
         .nav-links {
             position: fixed;
-            left: -100%; /* Ascuns în afara ecranului la stânga */
-            top: 100px; /* Sub navbar */
+            left: -100%; 
+            top: 100px; 
             gap: 0;
             flex-direction: column;
-            background-color: rgba(11, 15, 25, 0.95); /* Același fundal dark */
-            backdrop-filter: blur(16    px);
+            background-color: rgba(11, 15, 25, 0.95); 
+            backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             width: 100%;
             height: calc(100vh - 100px);
@@ -2140,30 +2142,24 @@
             box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
         }
 
-        /* Clasa care aduce meniul pe ecran */
         .nav-links.active {
             left: 0;
         }
 
         .nav-links ul {
-            flex-direction: column; /* Punem linkurile unele sub altele */
+            flex-direction: column; 
             padding-top: 50px;
             gap: 40px;
             width: 100%;
         }
 
         .nav-links ul li a {
-            font-size: 22px; /* Mai mare ca să poată fi apăsat cu degetul */
+            font-size: 22px; 
         }
         
-        /* Ajustăm butonul de contact din meniu ca să arate bine pe centru */
         li a.contact-btn {
             width: fit-content;
             margin: 0 auto;
-        }
-
-        .faq {
-            width: 80vw;
         }
 
         .about-section, 
@@ -2176,11 +2172,15 @@
         }
     }
 
+    /* SCROLL BLOCKER */
     body.no-scroll {
         overflow: hidden !important;
         touch-action: none !important;
     }
 
+    /* =========================================
+       RESPONSIVE: FIX TABLETE MICI & MOBILE MARI (sub 788px)
+       ========================================= */
     @media (max-width: 788px) {
         .footer-content {
             padding: 50px 20px;
@@ -2216,41 +2216,65 @@
             max-width: 260px;
         }
 
-        .faq-question button {
-            font-size: 19px;
+        .about-box:nth-child(2) .about-box-photo {
+            max-height: 440px;
         }
 
+        /* ----- REPARAȚII BUG-URI POZE AICI ----- */
+        
+        /* 1. FAQ-ul pe 100% lățime ca să încapă textul */
+        .faq {
+            width: 100% !important; 
+        }
+        .faq-question button {
+            font-size: 18px;
+            text-align: left;
+            padding-right: 15px;
+        }
         .faq-answer span {
             font-size: 15px;
         }
 
-        .about-box:nth-child(2) .about-box-photo {
-            max-height: 440px;
+        /* 2. Butoanele (Book a Session / Our Team) stivuite din timp */
+        .about-box-buttons {
+            flex-direction: column;
+            width: 100%;
+            gap: 15px;
+        }
+        .about-box-buttons button {
+            width: 100%;
+        }
+
+        /* 3. Forțăm titlurile să rămână mereu pe STÂNGA, cu bară albastră */
+        .about-box-text, 
+        .why-choose-us-box, 
+        .memberships-content, 
+        .our-team-content, 
+        .faq-content, 
+        .contact-content {
+            align-items: flex-start !important;
+            text-align: left !important;
         }
     }
 
     /* =========================================
-       RESPONSIVE: Telefoane (sub 700px) - HERO SECTION
+       RESPONSIVE: HERO SECTION (sub 700px)
        ========================================= */
     @media (max-width: 700px) {
-        
-        /* 1. Reducem padding-ul lateral imens */
         .hero-content {
             padding: 0 20px; 
-            justify-content: center; /* Centrăm totul pe ecran */
+            justify-content: center; 
         }
 
-        /* 2. Anulăm lățimea fixă de 650px */
         .hero-box {
             width: 100%;
             height: auto;
-            align-items: center; /* Centrează textul și butoanele pe orizontală */
-            text-align: center;  /* Textul arată mult mai bine centrat pe mobil */
+            align-items: center; 
+            text-align: center;  
             padding: 0;
-            margin-top: -50px; /* Ridicăm un pic conținutul dacă e prea jos */
+            margin-top: -50px; 
         }
 
-        /* 3. Micșorăm textele ca să nu se spargă urât pe mai multe rânduri */
         .hero-box h1 {
             font-size: 40px;
             margin-bottom: 15px;
@@ -2260,36 +2284,24 @@
             font-size: 16px;
         }
 
-        /* 4. Magia la butoane: le punem unul sub altul */
         .hero-buttons {
-            flex-direction: column; /* Schimbă ordinea din stânga-dreapta în sus-jos */
-            gap: 15px; /* Reducem spațiul enorm dintre ele */
+            flex-direction: column; 
+            gap: 15px; 
             width: 100%;
             align-items: center;
             margin-top: 30px;
         }
 
         .hero-buttons a {
-            width: 100%; /* Să se întindă frumos */
-            max-width: 320px; /* Dar să nu depășească 320px ca să nu arate gigantic */
+            width: 100%; 
+            max-width: 320px; 
             height: 55px;
             font-size: 18px;
-        }
-
-        .faq-question button {
-            font-size: 17px;
-        }
-
-        .faq-answer span {
-            font-size: 13px;
         }
     }
 
     /* =========================================
-       RESPONSIVE: Telefoane (sub 550px) - REPARAȚII FINALE
-       ========================================= */
-    /* =========================================
-       RESPONSIVE: Telefoane (sub 550px) - REPARAȚII FINALE
+       RESPONSIVE: TELEFOANE (sub 550px) - DETALII FINALE
        ========================================= */
     @media (max-width: 550px) {
         .about-section, 
@@ -2301,7 +2313,7 @@
             padding-right: 20px;
         }
 
-        /* 2. Titlurile principale - Rămân pe stânga, cu bara lor originală */
+        /* Titlurile principale - Aplicăm strict mărimea, alinierea vine de sus */
         .about-box-text h1, 
         .why-choose-us-box h1, 
         .memberships-content h1, 
@@ -2309,34 +2321,62 @@
         .faq-content h1, 
         .contact-content h1 {
             font-size: 28px;
-            /* Am șters "border-left: none", deci va prelua automat linia frumoasă de pe desktop! */
+            border-left: 6px solid #a5c9ff !important;
+            padding-left: 15px !important;
+            width: 100%;
         }
 
-        /* 3. Butoanele (ex: Book a Session / Our Team) */
         .about-box-buttons {
-            flex-direction: column;
-            width: 100%;
-            gap: 15px;
             padding: 0;
             margin-top: 20px;
         }
-        .about-box-buttons button {
-            width: 100%;
-        }
 
-        /* 4. Choose Us Boxes (1 pe rând, se întind pe tot ecranul) */
+        /* Reparație Apex Standards (Să nu se mai sugrume iconițele) */
         .boxes {
             flex-direction: column;
             align-items: center;
             gap: 30px 0;
         }
+        
+        /* Aici e magia: trecem de la rând orizontal la coloană verticală */
         .choose-box {
+            display: flex !important;
+            flex-direction: column !important; /* Textul ajunge sub titlu/iconiță */
+            align-items: flex-start !important;
             width: 100%;
             max-width: 100%;
             min-width: unset;
+            gap: 10px !important;
+            text-align: left;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(165, 201, 255, 0.1); /* Linie subtilă despărțitoare */
         }
 
-        /* 5. Memberships */
+        /* Lăsăm textul să ocupe tot spațiul disponibil */
+        .choose-box span,
+        .choose-box p,
+        .choose-box h3 {
+            width: 100% !important;
+            max-width: 100% !important;
+            text-align: left !important;
+            margin: 0 !important;
+            white-space: normal !important;
+        }
+
+        /* Ascundem săgețile, nu mai au sens pe verticală */
+        .choose-box i.fa-arrow-right,
+        .choose-box i.fa-long-arrow-right {
+            display: none !important;
+        }
+
+        /* Facem iconița principală mai evidentă */
+        .choose-box > i:first-child {
+            font-size: 24px !important;
+            color: #a5c9ff !important;
+            margin-bottom: 5px;
+        }
+
+        /* Memberships */
         .membership-card {
             width: 100%;
             padding: 20px 15px;
@@ -2360,17 +2400,7 @@
             transform: none;
         }
 
-        /* 6. FAQ - Lățime 100% și aliniat frumos la stânga */
-        .faq {
-            width: 100%;
-        }
-        .faq-question button {
-            text-align: left;
-            font-size: 17px;
-            padding-right: 10px;
-        }
-
-        /* 7. Formularul de Contact */
+        /* Formularul de Contact */
         .input-row {
             flex-direction: column;
             gap: 15px;
@@ -2382,9 +2412,197 @@
             width: 100%;
         }
 
-        /* 8. Footer pe 1 coloană */
+        /* Footer pe 1 coloană */
         .footer-grid {
             grid-template-columns: 1fr;
             gap: 30px;
         }
     }
+
+    /* ============================================================
+   APEX FITNESS — MOBILE RESPONSIVE FIXES
+   Adaugă acest bloc la FINALUL fișierului style.css
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   FIX 1: Săgeata scroll-down din Hero — centrare corectă
+   Problema: al doilea @keyframes bounce din CSS suprascrie
+   primul și pierde translateX(-50%), dezaxând săgeata.
+   Soluția: folosim o animație separată pentru scroll-down.
+   ---------------------------------------------------------- */
+.scroll-down {
+    animation: fadeInScroll 0.5s forwards 1s, bounceScroll 2s infinite 1.3s !important;
+}
+
+@keyframes bounceScroll {
+    0%, 100% { transform: translateY(0) translateX(-50%); }
+    50%       { transform: translateY(10px) translateX(-50%); }
+}
+
+
+/* ----------------------------------------------------------
+   FIX 2: "The Apex Standards" — iconițele și lista pe mobil
+   Problema: li-urile au flex-direction: row cu iconiță +
+   span + săgeată + span, care se sugrumă pe ecrane mici.
+   Soluția: pe mobil trecem la layout în două rânduri și
+   ascundem săgeata care nu mai are sens vizual.
+   ---------------------------------------------------------- */
+@media (max-width: 700px) {
+    .about-box-text ul li {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 4px;
+        column-gap: 8px;
+        align-items: start;
+    }
+
+    /* Iconița principală (dumbbell, user-check etc.) — rândul 1, coloana 1 */
+    .about-box-text ul li > i:first-child {
+        grid-row: 1;
+        grid-column: 1;
+        padding-top: 2px;
+    }
+
+    /* Numele (Elite Equipment, Expert Coaching etc.) — rândul 1, coloana 2 */
+    .about-box-text ul li > span:first-of-type {
+        grid-row: 1;
+        grid-column: 2;
+        font-weight: 700;
+    }
+
+    /* Săgeata -> ascunsă pe mobil */
+    .about-box-text ul li > .fa-arrow-right-long {
+        display: none;
+    }
+
+    /* Descrierea — rândul 2, coloana 2 (indentată sub nume) */
+    .about-box-text ul li > span:last-of-type {
+        grid-row: 2;
+        grid-column: 2;
+        margin-left: 0 !important;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+
+/* ----------------------------------------------------------
+   FIX 3: Butoanele "Book a Session / Our Team" peste imagine
+   Problema: .about-box-photo are min-height: 400px care o
+   extinde și iese deasupra butoanelor din secțiunea stivuită.
+   ---------------------------------------------------------- */
+@media (max-width: 1400px) {
+    .about-box:nth-child(2) .about-box-photo {
+        min-height: unset;
+        height: auto;
+    }
+
+    .about-box:nth-child(2) .about-box-photo img {
+        height: auto;
+        max-height: 420px;
+        object-fit: cover;
+    }
+
+    .about-box:nth-child(2) .about-box-text {
+        min-height: unset;
+    }
+}
+
+
+/* ----------------------------------------------------------
+   FIX 4: Săgeata "More Memberships" — centrare pe ecran
+   Problema: <a> e element inline, text-align: center nu
+   are efect. Trebuie display: block + width: 100%.
+   ---------------------------------------------------------- */
+.more-memberships-icon {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+}
+
+
+/* ----------------------------------------------------------
+   FIX 5: FAQ — itemii sunt prea mici pe mobil
+   Problema: .faq-container are padding: 30px 100px care
+   lasă prea puțin spațiu pentru text pe telefon.
+   ---------------------------------------------------------- */
+@media (max-width: 850px) {
+    .faq-container {
+        padding: 20px 0;
+    }
+
+    .faq {
+        width: 100% !important;
+    }
+
+    .faq-question button {
+        font-size: 17px;
+        text-align: left;
+        padding-right: 10px;
+        gap: 15px;
+    }
+
+    .faq-answer span {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 550px) {
+    .faq-question button {
+        font-size: 15px;
+    }
+}
+
+
+/* ----------------------------------------------------------
+   SCROLL TO TOP — ajustat pentru mobil
+   Mai mic, mai discret, fără să deranjeze conținutul.
+   ---------------------------------------------------------- */
+@media (max-width: 850px) {
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+        bottom: 18px;
+        right: 18px;
+    }
+}
+
+@media (max-width: 550px) {
+    .scroll-to-top {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+        bottom: 14px;
+        right: 14px;
+        box-shadow: 0 0 12px 2px rgba(165, 201, 255, 0.2);
+    }
+}
+
+@media (max-width: 850px) {
+    .about-box-text,
+    .about-box-photo {
+        min-height: unset !important;
+        flex: 1 1 auto;
+    }
+
+    .about-box-photo img {
+        height: auto !important;
+        max-height: 380px;
+        object-fit: cover;
+    }
+
+    .about-box {
+        gap: 30px;
+    }
+}
+
+/* --- More Memberships — text + săgeată centrate --- */
+.memberships-content h3.more-memberships {
+    width: 100%;
+    text-align: center;
+}
