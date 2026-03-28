@@ -203,15 +203,16 @@
     }
 
     .hamburger.active .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
+        transform: translateY(8.5px) rotate(45deg) !important;
     }
 
     .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
+        opacity: 0 !important;
+        transform: scaleX(0) !important;
     }
 
     .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
+        transform: translateY(-8.5px) rotate(-45deg) !important;
     }
 
     /* SCROLL BLOCKER */
@@ -1876,7 +1877,7 @@
     }
 
     /* --- sub 850px: hamburger menu activ --- */
-    @media (max-width: 850px) {
+    @media (max-width: 875px) {
         /* Hamburger vizibil */
         .hamburger { display: flex; }
 
@@ -1888,8 +1889,13 @@
 
         /* FIX: logo mic pe mobil */
         .logo-section {
-            height: 32px !important;
+            height: 34px !important;
             width: auto;
+        }
+
+        .logo-section img {
+            width: auto !important;
+            height: 100% !important;
         }
 
         /* FIX: hamburger X perfect simetric pe iOS */
@@ -1899,16 +1905,16 @@
         }
 
         .hamburger.active .bar:nth-child(1) {
-            transform: translateY(7.5px) rotate(45deg);
+            transform: translateY(8.5px) rotate(45deg) !important;
         }
 
         .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
+            opacity: 0 !important;
+            transform: scaleX(0) !important;
         }
 
         .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-7.5px) rotate(-45deg);
+            transform: translateY(-8.5px) rotate(-45deg) !important;
         }
 
         /* Nav links overlay */
@@ -2219,3 +2225,14 @@
             box-shadow: 0 0 12px 2px rgba(165, 201, 255, 0.2);
         }
     }
+
+    @media (max-width: 700px) {
+    .hero-section {
+        background: linear-gradient(
+            rgba(11, 15, 25, 0.65),
+            rgba(11, 15, 25, 0.65)
+        ), url('images/hero-photo.jpg');
+        background-size: cover;
+        background-position: center 30%;
+    }
+}
