@@ -1,3 +1,10 @@
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+    window.onbeforeunload = () => {
+        window.scrollTo(0, 0);
+    };
+
     const sections = document.querySelectorAll('div[id]');
     const navLinks = document.querySelectorAll('.nav-links ul li a');
     const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
