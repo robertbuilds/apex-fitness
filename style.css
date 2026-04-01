@@ -21,6 +21,8 @@
     html {
         scroll-behavior: smooth;
         scrollbar-width: thin;
+        scrollbar-width: thin;
+        scrollbar-color: #a5c9ff var(--bg-main);
         overflow-x: hidden;
         max-width: 100%;
     }

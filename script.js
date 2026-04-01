@@ -1,9 +1,12 @@
-    if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-}
-    window.addEventListener('load', () => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    });
+   if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo(0, 0);
+
+    if (window.location.hash) {
+        history.replaceState('', document.title, window.location.pathname + window.location.search);
+    }
 
     const sections = document.querySelectorAll('div[id]');
     const navLinks = document.querySelectorAll('.nav-links ul li a');
